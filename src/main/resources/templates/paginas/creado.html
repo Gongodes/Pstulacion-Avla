@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lista</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 
+<title>Creacion</title>
+</head>
+<body>
+<div class="panel panel-info">
+ <div class="panel-heading"><h3>Producto ingresado con exito</h3></div>
+ <table class="table">
+  <thead class="thead-light">
+    <tr>
+      
+      <th scope="col">Producto</th>
+      <th scope="col">Estado</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+   <tr >
+     
+    <td data-th-text="${productos.producto}"></td>
+  <td data-th-text="${productos.estado}"></td>
+     
+    </tr>
+   
+  </tbody>
+</table>
+
+</div>
+<br/><br/>
+<a class="btn btn-info" href="/registro"> Volver</a>
+</body>
+</html>
