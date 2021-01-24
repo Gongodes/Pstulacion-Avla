@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,67 +19,136 @@ import com.registro.gonzalo.app.modell.Productos;
 @RequestMapping("/registro")
 public class RegistroCrud {
 
+	String userx;
+	String passx;
+
 	@Autowired
 	private ICrud r;
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String login(Model modelo) {
+		return "paginas/index";
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String login(Model m, @RequestParam("user") String user, @RequestParam("pass") String pass) {
+		userx = user;
+		passx=pass;
+
+		return "redirect:/registro/lista";
+	}
+
+	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public String listar(ModelMap mm) {
-		mm.put("productos", r.findAll());
-		return "paginas/lista";
+
+		if (userx.equals("1") && passx.equals("1231") ) {
+
+			mm.put("productos", r.find1());
+			return "paginas/lista";
+		}
+
+		if (userx.equals("2")  && passx.equals("1232")    ) {
+
+			mm.put("productos2", r.find2());
+			return "paginas/lista";
+		}
+
+		if (userx.equals("3")  && passx.equals("1233")   ) {
+
+			mm.put("productos3", r.find3());
+			return "paginas/lista";
+		}
+		
+		if (userx.equals("4")   && passx.equals("admin")     ) {
+
+			mm.put("productos4", "");
+			mm.put("productosl", r.find1());
+			mm.put("productosl2", r.find2());
+			mm.put("productosl3", r.find3());
+
+			return "paginas/lista";
+		}
+
+		return "paginas/index";
 	}
 
 	@RequestMapping(value = "/nuevo", method = RequestMethod.GET)
-	public String nuevo(ModelMap mm) {
-		mm.put("productos", new Productos());
+	public String nuevo(Productos user, ModelMap mm) {
+
+		if (userx.equals("1") ) {
+			user.setId(1);
+			mm.put("user", user);
+			
+		}
+
+		if (userx.equals("2")) {
+			user.setId(2);
+			mm.put("user", user);
+			
+		}
+
+		if (userx.equals("3")) {
+			user.setId(3);
+			mm.put("user", user);
+			
+		}
+
 		return "paginas/nuevo";
 	}
 
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
-	public String crear(@Valid Productos producto, BindingResult bindingResult, ModelMap mm) {
-		if (bindingResult.hasErrors()) {
-			return "/paginas/nuevo";
-		} else {
-			r.save(producto);
-			mm.put("productos", producto);
-			return "paginas/creado";
-		}
+	public String crear(Productos producto, ModelMap mm) {
+
+		r.save(producto);
+		mm.put("productos", producto);
+
+		return "paginas/creado";
+
 	}
 
 	@RequestMapping(value = "/creado", method = RequestMethod.POST)
 	public String creado(@RequestParam("productos") Productos producto) {
 		return "/paginas/creado";
 	}
-	
-	
-	
-	
-	@RequestMapping(value="/borrar/{id}", method=RequestMethod.GET)
-	public String borrar(@PathVariable("id") int id, ModelMap mm){
-		r.delete(r.findById(id));
-	    mm.put("productos", r.findAll());
-	    return "paginas/lista";
+
+	@RequestMapping(value = "/borrar/{any}", method = RequestMethod.GET)
+	public String borrar(@PathVariable("any") Long any, ModelMap mm) {
+		r.delete(r.findByAny(any));
+
+		if (userx.equals("1")) {
+			mm.put("productos", r.find1());
+		}
+
+		if (userx.equals("2")) {
+			mm.put("productos", r.find2());
+		}
+
+		if (userx.equals("3")) {
+			mm.put("productos", r.find3());
+		}
+
+		return "paginas/lista";
+
 	}
-	
-	
-	
-	@RequestMapping(value="/editar/{id}", method=RequestMethod.GET)
-	public String editar(@PathVariable("id") int id, ModelMap mm){
-	    mm.put("productos", r.findById(id));
-	    return "paginas/editar";
+
+	@RequestMapping(value = "/editar/{any}", method = RequestMethod.GET)
+	public String editar(@PathVariable("any") Long any, ModelMap mm) {
+		mm.put("productos", r.findByAny(any));
+		return "paginas/editar";
 	}
-	 
-	@RequestMapping(value="/actualizar", method=RequestMethod.POST)
-	public String actualizar(@Valid Productos articulo, BindingResult bindingResult, ModelMap mm){
-	    if(bindingResult.hasErrors()){
-	        mm.put("productos", r.findAll());
-	    return "paginas/lista";
-	    }
-	    Productos art = r.findById(articulo.getId());
-	    art.setProducto(articulo.getProducto());
-	    art.setEstado(articulo.getEstado());
-	    r.save(art);
-	    mm.put("articulo", art);
-	    return "paginas/actualizado";
-	
-}
+
+	@RequestMapping(value = "/actualizar", method = RequestMethod.POST)
+	public String actualizar(@Valid Productos articulo, BindingResult bindingResult, ModelMap mm) {
+		if (bindingResult.hasErrors()) {
+			mm.put("productos", r.findAll());
+			return "paginas/lista";
+		}
+		Productos art = r.findByAny(articulo.getAny());
+		art.setProducto(articulo.getProducto());
+		art.setEstado(articulo.getEstado());
+		r.save(art);
+		mm.put("articulo", art);
+		return "paginas/actualizado";
+
+	}
 }

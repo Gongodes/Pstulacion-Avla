@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lista</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<title>nuevo</title>
+</head>
+<body>
+	<div class="panel panel-info">
+		<div class="page-header">
+
+			<h1>Ingresar usuario</h1>
+
+		</div>
+		<form action="#" th:action="@{/registro/}" id="basic-form"
+			class="form-container" method="post" name="Validalogin">
+
+			<div class="form-group">
+				<h4 class="text-center font-weight-bold">Login</h4>
+				<select class="form-control" name="user" id="user">
+					<option value="1">vendedor 1</option>
+					<option value="2">vendedor 2</option>
+					<option value="3">vendedor 3</option>
+					<option value="4">Administrador</option>
+				</select>
+
+			</div>
+			<div class="form-group">
+				<label for="InputPassword1">Clave</label> <input type="password"
+					class="form-control" id="pass" name="pass" required>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+			<div class="form-footer"></div>
+		</form>
+	</div>
+</body>
+
+</html>

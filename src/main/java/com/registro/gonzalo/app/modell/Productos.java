@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.Length;
+
 
 
 @Entity
@@ -14,19 +14,28 @@ public class Productos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long any;
+	
 	private int id;
-	@NotEmpty
+	
 	private String producto;
-	@NotEmpty
+	
 	private String estado;
 	public Productos() {
 		super();
 	}
-	public Productos(@NotEmpty int id, @NotEmpty String producto, @NotEmpty String estado) {
+	public Productos(long any, int id, @NotEmpty String producto, @NotEmpty String estado) {
 		super();
+		this.any = any;
 		this.id = id;
 		this.producto = producto;
 		this.estado = estado;
+	}
+	public long getAny() {
+		return any;
+	}
+	public void setAny(long any) {
+		this.any = any;
 	}
 	public int getId() {
 		return id;
@@ -46,7 +55,10 @@ public class Productos {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
+	
+	
+	
+	
 	
 	
 	}

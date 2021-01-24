@@ -17,7 +17,7 @@
 
 </div>
 <form action="#" th:action="@{/registro/actualizar}" th:object="${productos}" method="post">
-<input type="hidden" id="id" name="id" th:field="*{id}"/>
+<input type="hidden" id="any" name="any" th:field="*{any}"/>
 
 
 
@@ -56,5 +56,15 @@
 </div>
 </form>
 </div>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('input#producto')
+    .keypress(function (event) {
+      if (this.value.length === 30) {
+        return false;
+      }
+    });
+});
+</script>
 </body>
 </html>

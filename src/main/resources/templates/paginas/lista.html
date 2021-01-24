@@ -3,51 +3,186 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>lista</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <title>Lista</title>
 </head>
 <body>
-	<div class="panel panel-info">
+	<div class="panel panel-info" th:if="${productos != null}">
 		<div class="panel-heading">
-			<h3>Lista de productos</h3>
+			<h3>Lista de productos Vendedor 1</h3>
 		</div>
 
 
 		<table class="table">
 			<thead class="thead-light">
 				<tr>
-					
+
 					<th scope="col">Producto</th>
 					<th scope="col">Estado</th>
 					<th style="text-align: center;">Modificar</th>
 					<th style="text-align: center;">Eliminar</th>
-
+					<th scope="col">Usuario</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr data-th-each="producto:${productos}">
-					
 					<td data-th-text="${producto.producto}"></td>
 					<td data-th-text="${producto.estado}"></td>
-					<td style="text-align: center;"><a th:href="@{'/registro/editar/{id}'(id=${producto.id})}"
-						> <span 
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/editar/{any}'(any=${producto.any})}"> <span
 							class="glyphicon glyphicon-edit"></span>
 					</a></td>
-					<td style="text-align: center;"><a th:href="@{'/registro/borrar/{id}'(id=${producto.id})}"
-						> <span 
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/borrar/{any}'(any=${producto.any})}"> <span
 							class="glyphicon glyphicon-trash"></span>
 					</a></td>
+					<td style="color: blue">Vendedor 1</td>
 				</tr>
 			</tbody>
 		</table>
+		<br /> <br /> <a class="btn btn-info" href="/registro/nuevo">Nuevo
+			Producto</a> <br /> <br /> <a class="btn btn-info" href="/registro/">Volver
+			a inicio</a>
+
+
+
 	</div>
 
-	<br />
-	<br />
-	<a class="btn btn-info" href="/registro/nuevo">Nuevo Producto</a>
 
+
+
+
+	<div class="panel panel-info" th:if="${productos2 != null}">
+		<div class="panel-heading">
+			<h3>Lista de productos Vendedor 2</h3>
+		</div>
+
+
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+
+					<th scope="col">Producto</th>
+					<th scope="col">Estado</th>
+					<th style="text-align: center;">Modificar</th>
+					<th style="text-align: center;">Eliminar</th>
+					<th scope="col">Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="producto2:${productos2}">
+
+					<td data-th-text="${producto2.producto}"></td>
+					<td data-th-text="${producto2.estado}"></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/editar/{any}'(any=${producto2.any})}"> <span
+							class="glyphicon glyphicon-edit"></span>
+					</a></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/borrar/{any}'(any=${producto2.any})}"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a></td>
+					<td style="color: red">Vendedor 2</td>
+				</tr>
+			</tbody>
+		</table>
+		<br /> <br /> <a class="btn btn-info" href="/registro/nuevo">Nuevo
+			Producto</a> <br /> <br /> <a class="btn btn-info" href="/registro/">Volver
+			a inicio</a>
+
+
+
+	</div>
+
+
+
+	<div class="panel panel-info" th:if="${productos3 != null}">
+		<div class="panel-heading">
+			<h3>Lista de productos Vendedor 3</h3>
+		</div>
+
+
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+
+					<th scope="col">Producto</th>
+					<th scope="col">Estado</th>
+					<th style="text-align: center;">Modificar</th>
+					<th style="text-align: center;">Eliminar</th>
+					<th scope="col">Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="producto3:${productos3}">
+
+					<td data-th-text="${producto3.producto}"></td>
+					<td data-th-text="${producto3.estado}"></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/editar/{any}'(any=${producto3.any})}"> <span
+							class="glyphicon glyphicon-edit"></span>
+					</a></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/registro/borrar/{any}'(any=${producto3.any})}"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a></td>
+					<td style="color: green">Vendedor 3</td>
+				</tr>
+			</tbody>
+		</table>
+		<br /> <br /> <a class="btn btn-info" href="/registro/nuevo">Nuevo
+			Producto</a> <br /> <br /> <a class="btn btn-info" href="/registro/">Volver
+			a inicio</a>
+
+
+
+	</div>
+
+	<div class="panel panel-info" th:if="${productos4 != null}">
+		<div class="panel-heading">
+			<h3>Lista de productos totales</h3>
+		</div>
+
+
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">Producto</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="producto:${productosl}">
+					<td data-th-text="${producto.producto}"></td>
+					<td data-th-text="${producto.estado}"></td>
+					<td style="color: blue">Vendedor 1</td>
+				<tr data-th-each="producto:${productosl2}">
+					<td data-th-text="${producto.producto}"></td>
+					<td data-th-text="${producto.estado}"></td>
+					<td style="color: red">Vendedor 2</td>
+				<tr data-th-each="producto:${productosl3}">
+					<td data-th-text="${producto.producto}"></td>
+					<td data-th-text="${producto.estado}"></td>
+					<td style="color: green">Vendedor 3</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<br /> <br /> <a class="btn btn-info" href="/registro/">Volver a
+			inicio</a>
+
+
+
+
+
+	</div>
 </body>
 </html>
