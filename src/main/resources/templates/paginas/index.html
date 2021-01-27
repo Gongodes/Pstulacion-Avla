@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>lista</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -10,7 +11,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<title>nuevo</title>
+
 </head>
 <body>
 	<div class="panel panel-info">
@@ -36,10 +37,25 @@
 				<label for="InputPassword1">Clave</label> <input type="password"
 					class="form-control" id="pass" name="pass" required>
 			</div>
-			<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+			<button id="boton"  type="submit" class="btn btn-primary btn-block">Entrar</button>
 			<div class="form-footer"></div>
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+$(document).ready(function () {
+  $('#boton')
+    .click(function (ev0ent) {
+    if($('#user').val() == '1' && $('#pass').val()  != "1231"    ){ alert('contraseña incorrecta')};
+    if($('#user').val() == '2' && $('#pass').val()  != "1232"    ){ alert('contraseña incorrecta')};
+    if($('#user').val() == '3' && $('#pass').val()  != "1233"    ){ alert('contraseña incorrecta')};
+    if($('#user').val() == '4' && $('#pass').val()  != "admin"  ){ alert('contraseña incorrecta')};
+    
+    
+    
+    });
+});
+</script>
 </body>
 
 </html>
