@@ -26,7 +26,7 @@ public class RegistroCrud {
 	private ICrud r;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String login(Model modelo) {
+	public String login() {
 		return "paginas/index";
 	}
 
