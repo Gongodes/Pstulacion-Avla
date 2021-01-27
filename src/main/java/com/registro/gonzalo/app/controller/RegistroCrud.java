@@ -1,12 +1,12 @@
 package com.registro.gonzalo.app.controller;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -138,11 +138,8 @@ public class RegistroCrud {
 	}
 
 	@RequestMapping(value = "/actualizar", method = RequestMethod.POST)
-	public String actualizar(@Valid Productos articulo, BindingResult bindingResult, ModelMap mm) {
-		if (bindingResult.hasErrors()) {
-			mm.put("productos", r.findAll());
-			return "paginas/lista";
-		}
+	public String actualizar(Productos articulo, ModelMap mm) {
+		
 		Productos art = r.findByAny(articulo.getAny());
 		art.setProducto(articulo.getProducto());
 		art.setEstado(articulo.getEstado());
